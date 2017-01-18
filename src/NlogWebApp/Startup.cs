@@ -12,6 +12,7 @@ using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Diagnostics;
 using NLog;
+using Sino.Web.Filter;
 
 namespace NlogWebApp
 {
@@ -31,7 +32,7 @@ namespace NlogWebApp
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(x => x.Filters.Add(typeof(GlobalResultFilter)));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

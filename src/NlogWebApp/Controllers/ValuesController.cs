@@ -14,7 +14,7 @@ namespace NlogWebApp.Controllers
     {
         private static readonly Logger log = LogManager.GetCurrentClassLogger();
 
-        class a
+        public class a
         {
             public string message { get; set; }
             public DateTime date { get; set; }
@@ -22,15 +22,15 @@ namespace NlogWebApp.Controllers
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<a>> Get()
         {
-            throw new SinoException("自定义异常", 10200);
+            //throw new SinoException("自定义异常", 10200);
             log.Error(new ArgumentNullException("id"), JsonConvert.SerializeObject(new a
             {
                 message = "看看能不能支持中文",
                 date = DateTime.Now
             }));
-            return new string[] { "value1", "value2" };
+            return new a[] { new a { message = "test",date = DateTime.Now }, new a { message = "ffee",date = DateTime.Now } };
         }
 
         // GET api/values/5
