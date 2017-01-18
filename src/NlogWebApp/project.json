@@ -15,7 +15,10 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "NLog.Extensions.Logging": "1.0.0-rtm-alpha5",
-    "System.Text.Encoding.CodePages": "4.3.0"
+    "System.Text.Encoding.CodePages": "4.3.0",
+    "Microsoft.AspNetCore.Diagnostics": "1.0.0",
+    "Microsoft.AspNetCore.Diagnostics.Abstractions": "1.0.0",
+    "Sino.Web": "1.1.8"
   },
 
   "tools": {

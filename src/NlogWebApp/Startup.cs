@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
 using System.Text;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Diagnostics;
+using NLog;
 
 namespace NlogWebApp
 {
@@ -39,6 +42,7 @@ namespace NlogWebApp
             loggerFactory.AddNLog();
             env.ConfigureNLog("nlog.config");
 
+            app.UseGlobalExceptionHandler(LogManager.GetCurrentClassLogger());
             app.UseMvc();
         }
     }

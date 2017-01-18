@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
 using Newtonsoft.Json;
+using Sino;
 
 namespace NlogWebApp.Controllers
 {
@@ -23,6 +24,7 @@ namespace NlogWebApp.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+            throw new SinoException("自定义异常", 10200);
             log.Error(new ArgumentNullException("id"), JsonConvert.SerializeObject(new a
             {
                 message = "看看能不能支持中文",
