@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Diagnostics;
 using NLog;
 using Sino.Web.Filter;
+using NlogWebApp.Services;
+using AspectCore.Lite.Container.DependencyInjection;
 
 namespace NlogWebApp
 {
@@ -30,9 +32,11 @@ namespace NlogWebApp
 
         public IConfigurationRoot Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IValueService, ValueService>();
             services.AddMvc(x => x.Filters.Add(typeof(GlobalResultFilter)));
+            return new AspectCoreServiceProviderFactory().CreateServiceProvider(services);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

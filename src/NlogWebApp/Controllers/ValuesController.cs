@@ -7,6 +7,7 @@ using NLog;
 using Newtonsoft.Json;
 using Sino;
 using Sino.Runtime;
+using NlogWebApp.Services;
 
 namespace NlogWebApp.Controllers
 {
@@ -15,10 +16,17 @@ namespace NlogWebApp.Controllers
     {
         private static readonly Logger log = LogManager.GetCurrentClassLogger();
 
+        private IValueService _service;
+
         public class a
         {
             public string message { get; set; }
             public DateTime date { get; set; }
+        }
+
+        public ValuesController(IValueService service)
+        {
+            _service = service;
         }
 
         // GET api/values
@@ -36,8 +44,9 @@ namespace NlogWebApp.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<object> Get(int id)
         {
+            _service.Get();
             return "value";
         }
 

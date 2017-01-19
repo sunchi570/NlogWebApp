@@ -18,7 +18,8 @@
     "System.Text.Encoding.CodePages": "4.3.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics.Abstractions": "1.0.0",
-    "Sino.Web": "1.1.10"
+    "Sino.Web": "1.1.10",
+    "AspectCore.Lite.Container.DependencyInjection": "1.1.0-rc1"
   },
 
   "tools": {
