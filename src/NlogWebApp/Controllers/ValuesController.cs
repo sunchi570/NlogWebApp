@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Sino;
 using Sino.Runtime;
 using NlogWebApp.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NlogWebApp.Controllers
 {
@@ -31,6 +32,7 @@ namespace NlogWebApp.Controllers
 
         // GET api/values
         [HttpGet]
+        [Microsoft.AspNetCore.Authorization.Authorize]
         public async Task<IEnumerable<a>> Get()
         {
             throw new SinoRpcException("自定义异常", 10200);
@@ -43,6 +45,7 @@ namespace NlogWebApp.Controllers
         }
 
         // GET api/values/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<object> Get(int id)
         {

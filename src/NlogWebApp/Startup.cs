@@ -47,6 +47,13 @@ namespace NlogWebApp
             loggerFactory.AddNLog();
             env.ConfigureNLog("nlog.config");
 
+            app.UseCookieAuthentication(new CookieAuthenticationOptions()
+            {
+                ExpireTimeSpan = TimeSpan.FromDays(1),
+                AuthenticationScheme = "Automatic",
+                AutomaticAuthenticate = true,
+                Events = new DefaultAuthenticationEvents()
+            });
             app.UseGlobalExceptionHandler(LogManager.GetCurrentClassLogger());
             app.UseMvc();
         }
